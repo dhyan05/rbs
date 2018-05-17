@@ -2,6 +2,7 @@ package com.test;
 
 import com.test.PageObjects.homepage;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -55,10 +56,51 @@ public class stepDefs{
         driver.findElement(By.cssSelector("div.col-sm-6:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1) > span:nth-child(2)")).click();
         String OrderNumber = driver.findElement(By.cssSelector("tr.first_item > td:nth-child(1) > a:nth-child(2)")).getText();
         System.out.println("Order Number="+OrderNumber);
-        System.out.println(test);
+        //System.out.println(test);
         //softAssert.assertEquals(OrderNumber,orderTshirt());
 
 
 
     }
+
+    @Given ("^User is logged in$")
+    public void updateMyAccount() {
+        homepage page = new homepage(driver);
+        driver.findElement(By.cssSelector(".login")).click();
+        driver.findElement(By.cssSelector("#email")).sendKeys("someone@example.com");
+        driver.findElement(By.cssSelector("#passwd")).sendKeys("Password123");
+        driver.findElement(By.cssSelector("#SubmitLogin > span")).click();
+    }
+
+    @When("^user goes to personal details$")
+    public void editMyAccount() {
+        driver.findElement(By.cssSelector("div.col-sm-6:nth-child(1) > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1) > span:nth-child(2)")).click();
+    }
+
+    @And("^user updates his first name$")
+    public void updateFirstName(){
+        driver.findElement(By.cssSelector("#firstname")).clear();
+        driver.findElement(By.cssSelector("#firstname")).sendKeys("Dhyan");
+        driver.findElement(By.cssSelector("#old_passwd")).sendKeys("Password123");
+        driver.findElement(By.cssSelector("#center_column > div > form > fieldset > div:nth-child(11) > button > span")).click();
+
+
+    }
+
+    @Then("^first name should be updated$")
+    public void UpdateMyAccount(){
+        String alertMessage = driver.findElement(By.cssSelector(".alert")).getText();
+        String expectedOutcome = "Your personal information has been successfully updated.";
+        softAssert.assertEquals(expectedOutcome,alertMessage);
+        softAssert.assertAll();
+
+    //    driver.findElement(By.cssSelector("#firstname")).sendKeys("Test123");
+    //    driver.findElement(By.cssSelector("#passwd")).sendKeys("Password123");
+    //    driver.findElement(By.cssSelector("#center_column > div > form > fieldset > div:nth-child(11) > button > span")).click();
+
+
+
+    }
+
+
 }

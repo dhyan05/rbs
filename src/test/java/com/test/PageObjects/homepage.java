@@ -19,9 +19,15 @@ public class homepage {
 
     }
 
+    public void clickUserNameButton(){
+        AccountName_Button.click();
+
+    }
+
 
 
     //WebElements
     @FindBy (css = "#block_top_menu > ul > li:nth-child(3) > a") public WebElement TShirt_Button;
+    @FindBy (css = "#header > div.nav > div > div > nav > div:nth-child(1) > a > span") public WebElement AccountName_Button;
 
 }
