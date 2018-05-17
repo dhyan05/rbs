@@ -4,3 +4,5 @@
 2. Download or checkout dhyan05/rbs from GIT
 3. In Hooks.java change the path for driver as per your system
 4. Execute TestRunner.java 
+
+PS: Please dont be amazed if you see "sanjanjain" anywhere as its my wifes system i have worked on. 
