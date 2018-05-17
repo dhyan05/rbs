@@ -13,8 +13,6 @@ public class Hooks {
     public void beforeStartup(){
 
         System.setProperty("webdriver.gecko.driver", "/Users/sanjanajain/rbs/src/drivers/node_modules/geckodriver/geckodriver");
-        //file:///Users/sanjanajain/rbs/src/drivers/chromedriver
-        ///Users/sanjanajain/rbs/src/drivers/node_modules/chromedriver/bin/chromedriver
         driver = new FirefoxDriver();
         driver.get("http://automationpractice.com/index.php");
 
