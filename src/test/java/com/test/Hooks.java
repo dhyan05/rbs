@@ -20,8 +20,8 @@ public class Hooks {
 
     }
 
-    //@After
-    //public void afterScenario(){
-    //driver.quit();
-    //}
+    @After
+    public void afterScenario(){
+    driver.quit();
+    }
 }
